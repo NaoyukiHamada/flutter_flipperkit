@@ -33,7 +33,18 @@ android {
     }
     dependencies {
         releaseImplementation project(':flipper-no-op')
-        debugImplementation 'com.facebook.flipper:flipper:0.23.1'
+        // debugImplementation 'com.facebook.flipper:flipper:0.23.1'
         debugImplementation 'com.facebook.soloader:soloader:0.5.1'
+        debugImplementation ("com.facebook.flipper:flipper:0.23.1") {
+            exclude group: "androidx.appcompat", module: "appcompat"
+        }
+        debugImplementation ("com.facebook.litho:litho-widget:0.29.0") {
+            exclude group: "androidx.recyclerview", module: "recyclerview"
+        }
+        debugImplementation ("com.facebook.litho:litho-core:0.29.0") {
+            exclude group: "androidx.core", module: "core"
+            exclude group: "androidx.customview", module: "customview"
+            exclude group: "androidx.viewpager", module: "viewpager"
+        }
     }
 }
